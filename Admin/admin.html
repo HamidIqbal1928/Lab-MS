@@ -1,386 +1,524 @@
 <!DOCTYPE html>
-
-<html lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title> LabPro - Premium Admin Dashboard</title>
-<!-- Tailwind CSS v3 with Plugins -->
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<!-- Fonts: Inter and Plus Jakarta Sans -->
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
-<script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            primary: '#ec5b13',
-            'primary-dark': '#d14d0d',
-            charcoal: '#f8fafc',
-            surface: '#ffffff',
-          },
-          fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-            heading: ['Plus Jakarta Sans', 'sans-serif'],
-          },
-          boxShadow: {
-            'soft': '0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05)',
-          }
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Lab Pro - Admin Dashboard</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2563EB",      /* Primary Blue */
+                        "primary-light": "#3B82F6", 
+                        "primary-dark": "#1D4ED8",
+                        "sidebar": "#1E3A8A",      /* Sidebar Dark Blue */
+                        "sidebar-hover": "#2e4a9e",
+                        "background-light": "#F8FAFC", /* Background */
+                        "background-dark": "#0F172A",
+                        "card": "#FFFFFF",         /* Cards */
+                        "accent": "#14B8A6",       /* Accent Teal */
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'shimmer': 'shimmer 2s linear infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        shimmer: {
+                            '0%': { backgroundPosition: '-200% 0' },
+                            '100%': { backgroundPosition: '200% 0' },
+                        },
+                    },
+                },
+            },
         }
-      }
-    }
-  </script>
-<style data-purpose="custom-glassmorphism">
-    .glass-card {
-      background: rgba(255, 255, 255, 0.8);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(0, 0, 0, 0.05);
-      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
-      transition: all 0.3s ease;
-    }
-    .glass-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.15);
-      border: 1px solid rgba(236, 91, 19, 0.2);
-    }
-    .glass-nav {
-      background: rgba(255, 255, 255, 0.8);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-    }
-    .gradient-bg {
-      background: linear-gradient(135deg, #fff5f0 0%, #ffffff 100%);
-    }
-    .pulse-orange {
-      animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-    }
-    @keyframes pulse-ring {
-      0%, 100% { opacity: 1; } 
-      50% { opacity: .5; }
-    }
-    #mobile-sidebar.hidden { display: none; }
-  </style>
+    </script>
+    
+    <style>
+        /* Smooth Scrolling */
+        html { scroll-behavior: smooth; }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #F8FAFC; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #2563EB, #14B8A6); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #1D4ED8; }
+        .dark ::-webkit-scrollbar-track { background: #1e293b; }
+        
+        /* Glassmorphism Effect */
+        .glass { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+        .dark .glass { background: rgba(15, 23, 42, 0.8); border-bottom: 1px solid rgba(255,255,255,0.05); }
+        
+        /* Gradient Text */
+        .gradient-text { background: linear-gradient(135deg, #2563EB, #14B8A6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        
+        /* Button Ripple Effect */
+        .btn-ripple { position: relative; overflow: hidden; }
+        .btn-ripple::after { content: ''; position: absolute; top: 50%; left: 50%; width: 0; height: 0; background: rgba(255, 255, 255, 0.3); border-radius: 50%; transform: translate(-50%, -50%); transition: width 0.6s ease, height 0.6s ease; }
+        .btn-ripple:active::after { width: 300px; height: 300px; }
+        
+        /* Floating Animation */
+        .float-animation { animation: float 6s ease-in-out infinite; }
+        
+        /* Card Shine Effect */
+        .card-shine { position: relative; overflow: hidden; }
+        .card-shine::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: linear-gradient(to bottom right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 40%, rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0) 60%, rgba(255, 255, 255, 0) 100%); transform: rotate(45deg); transition: all 0.5s ease; opacity: 0; z-index: 10; pointer-events: none;}
+        .card-shine:hover::before { animation: shine 1s ease forwards; }
+        @keyframes shine { 0% { left: -50%; opacity: 1; } 100% { left: 150%; opacity: 0; } }
+        
+        /* Smooth Page Transitions */
+        .page-transition { animation: fadeInUp 0.6s ease-out; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        
+        /* Stagger Animation */
+        .stagger-1 { animation-delay: 0.1s; } .stagger-2 { animation-delay: 0.2s; } .stagger-3 { animation-delay: 0.3s; } .stagger-4 { animation-delay: 0.4s; }
+        
+        /* Sidebar Link Hover & Active */
+        .sidebar-link { position: relative; transition: all 0.3s ease; }
+        .sidebar-link.active { background: rgba(255, 255, 255, 0.1); color: #14B8A6; }
+        .sidebar-link.active::before { content: ''; position: absolute; left: 0; top: 0; height: 100%; width: 4px; background: #14B8A6; border-radius: 0 4px 4px 0; }
+        
+        /* Input Focus Effect */
+        .input-glow:focus { box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2); border-color: #2563EB; }
+        
+        /* Progress Bar Animation */
+        .progress-animate { animation: progressFill 1.5s ease-out forwards; }
+        @keyframes progressFill { from { width: 0%; } }
+    </style>
 </head>
-<body class="bg-slate-50 text-slate-900 font-sans selection:bg-primary/20 min-h-screen flex">
-<!-- BEGIN: Sidebar -->
-<aside class="hidden md:flex flex-col w-64 h-screen sticky top-0 border-r border-slate-100 bg-white z-50 transition-all duration-300" data-purpose="sidebar">
-<div class="p-6 flex items-center gap-3">
-<div class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center shadow-lg shadow-primary/20">
-<svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-<path d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
-</svg>
-</div>
-<a href="/Admin/admin.html" class="font-heading font-extrabold text-xl tracking-tight hover:opacity-80 transition-all">
-  Lab<span class="text-primary">Pro</span>
-</a></div>
-<nav class="flex-1 px-4 space-y-2 mt-4" >
-<a href="/Admin/admin.html" class="flex items-center gap-3 px-4 py-3 text-black-100 hover:text-red-500 hover:bg-white/5 rounded-xl transition-all">
-    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
-    <span class="font-medium">Dashboard</span>
-  </a>
-<a class="flex items-center gap-3 px-4 py-3 text-black-100 hover:text-red-500 hover:bg-white/5 rounded-xl transition-all" href="/Admin/patient.html">
-<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
-<span class="font-medium">Patients</span>
-</a>
-<a class="flex items-center gap-3 px-4 py-3 text-black-100 hover:text-red-500 hover:bg-white/5 rounded-xl transition-all" href="/Admin/LabReport.html">
-  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2m-4 0a2 2 0 012-2h2a2 2 0 012 2m-6 7h.01M9 16h.01" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
-  </svg>
-  <span class="font-medium">Lab Reports</span>
-</a>
-<a class="flex items-center gap-3 px-4 py-3 text-black-100 hover:text-red-500 hover:bg-white/5 rounded-xl transition-all" href="/Admin/Analytics.html">
-<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
-<span class="font-medium">Analytics</span>
-</a>
-<a class="flex items-center gap-3 px-4 py-3 text-black-100 hover:text-red-500 hover:bg-white/5 rounded-xl transition-all" href="/Admin/Invoicing.html">
-<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M12 16V15m0 1v-8" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
-<span class="font-medium">Invoicing</span>
-</a>
-</nav>
-<div class="p-4 mt-auto border-t border-white/5">
-<div class="glass-card p-4 rounded-xl flex items-center gap-3">
-<div class="w-10 h-10 rounded-full bg-gradient-to-tr from-primary to-orange-300 flex items-center justify-center text-white font-bold">
-          AD
+
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen flex">
+    
+    <!-- ================= SIDEBAR (Desktop) ================= -->
+    <aside class="hidden md:flex w-64 bg-sidebar text-white flex-col fixed h-full transition-all duration-300 z-20 shadow-2xl">
+        <!-- Logo Section -->
+        <div class="p-6 flex items-center gap-3 border-b border-white/10">
+            <div class="w-10 h-10 bg-accent rounded-xl flex items-center justify-center text-white shadow-lg shadow-accent/40 float-animation">
+                <span class="material-symbols-outlined text-2xl">science</span>
+            </div>
+            <div>
+                <h1 class="text-2xl font-black tracking-tight text-white">Lab Pro<span class="text-accent">.</span></h1>
+            </div>
         </div>
-<div class="flex-1 min-w-0">
-<p class="text-sm font-semibold truncate">Alex Durand</p>
-<p class="text-xs text-gray-500 truncate">Admin Access</p>
-</div>
-<button class="text-gray-400 hover:text-white">
-<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
-</button>
-</div>
-</div>
-</aside>
-<!-- Mobile Sidebar -->
-<div class="hidden fixed inset-0 z-50 md:hidden" id="mobile-sidebar">
-  <!-- Overlay -->
-  <div class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm" id="mobile-sidebar-overlay"></div>
-
-  <!-- Sidebar Panel -->
-  <div class="fixed inset-y-0 right-0 w-72 bg-white shadow-2xl p-6 flex flex-col">
-
-    <!-- Full-width Header: Logo + Name  + Close -->
-    <div class="flex items-center justify-between mb-6 w-full gap-3">
-      <!-- Logo + Name -->
-      <a href="/Admin/dashboard.html" class="flex items-center gap-2">
-        <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
-        </svg>
-        <span class="font-heading font-extrabold text-xl tracking-tight">
-          Lab<span class="text-primary">Pro</span>
-        </span>
-      </a>
-
-      
-
-      <!-- Close Button -->
-      <button class="p-2 text-slate-400 hover:text-slate-600" id="close-mobile-menu">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
-        </svg>
-      </button>
+        
+        <!-- Navigation Links -->
+        <nav class="flex-1 px-4 space-y-2 mt-8 overflow-y-auto">
+            <!-- Dashboard (Active) -->
+            <a class="sidebar-link active flex items-center gap-3 px-4 py-3 rounded-xl font-semibold group" href="#">
+                <span class="material-symbols-outlined group-hover:scale-110 transition-transform duration-300">dashboard</span>
+                <span>Dashboard</span>
+            </a>
+            
+            <!-- Patients -->
+            <a class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-xl text-slate-300 hover:bg-sidebar-hover hover:text-white transition-all duration-300 group" href="#">
+                <span class="material-symbols-outlined group-hover:scale-110 transition-all duration-300">groups</span>
+                <span>Patients</span>
+            </a>
+            
+            <!-- Lab Reports -->
+            <a class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-xl text-slate-300 hover:bg-sidebar-hover hover:text-white transition-all duration-300 group" href="#">
+                <span class="material-symbols-outlined group-hover:scale-110 transition-all duration-300">biotech</span>
+                <span>Lab Reports</span>
+                <span class="ml-auto px-2 py-0.5 text-[10px] font-bold bg-accent/20 text-accent rounded-full border border-accent/30">New</span>
+            </a>
+            
+            <!-- Analytics -->
+            <a class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-xl text-slate-300 hover:bg-sidebar-hover hover:text-white transition-all duration-300 group" href="#">
+                <span class="material-symbols-outlined group-hover:scale-110 transition-all duration-300">analytics</span>
+                <span>Analytics</span>
+            </a>
+            
+            <!-- Invoicing -->
+            <a class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-xl text-slate-300 hover:bg-sidebar-hover hover:text-white transition-all duration-300 group" href="#">
+                <span class="material-symbols-outlined group-hover:scale-110 transition-all duration-300">receipt_long</span>
+                <span>Invoicing</span>
+            </a>
+        </nav>
+        
+        <!-- User Profile Section -->
+        <div class="p-4 border-t border-white/10 bg-black/10">
+            <div class="flex items-center gap-3 p-2 rounded-xl hover:bg-white/5 transition-all duration-300 cursor-pointer group">
+                <div class="relative">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-bold shadow-lg">
+                        SA
+                    </div>
+                    <span class="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 bg-emerald-400 border-2 border-sidebar rounded-full"></span>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <p class="text-sm font-bold text-white truncate group-hover:text-accent transition-colors">Dr. Sarah</p>
+                    <p class="text-xs text-slate-400 truncate">Administrator</p>
+                </div>
+                <span class="material-symbols-outlined text-slate-400 group-hover:text-white transition-all duration-300">logout</span>
+            </div>
+        </div>
+    </aside>
+    
+    <!-- ================= MOBILE SIDEBAR ================= -->
+    <div class="hidden fixed inset-0 z-50 md:hidden" id="mobile-sidebar">
+        <div class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity duration-300" id="mobile-sidebar-overlay"></div>
+        <div class="fixed inset-y-0 left-0 w-72 bg-sidebar text-white shadow-2xl flex flex-col transform transition-transform duration-300">
+            <div class="p-6 flex items-center justify-between border-b border-white/10">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-accent rounded-xl flex items-center justify-center text-white shadow-lg">
+                        <span class="material-symbols-outlined">science</span>
+                    </div>
+                    <h1 class="text-xl font-black tracking-tight text-white">Lab Pro<span class="text-accent">.</span></h1>
+                </div>
+                <button class="p-2 text-slate-300 hover:text-white hover:bg-white/10 rounded-lg transition-all" id="close-mobile-menu">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            <nav class="flex-1 px-4 space-y-2 mt-6 overflow-y-auto">
+                <a class="sidebar-link active flex items-center gap-3 px-4 py-3 rounded-xl font-semibold" href="#"><span class="material-symbols-outlined">dashboard</span><span>Dashboard</span></a>
+                <a class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-xl text-slate-300 hover:bg-sidebar-hover hover:text-white" href="#"><span class="material-symbols-outlined">groups</span><span>Patients</span></a>
+                <a class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-xl text-slate-300 hover:bg-sidebar-hover hover:text-white" href="#"><span class="material-symbols-outlined">biotech</span><span>Lab Reports</span></a>
+                <a class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-xl text-slate-300 hover:bg-sidebar-hover hover:text-white" href="#"><span class="material-symbols-outlined">analytics</span><span>Analytics</span></a>
+                <a class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-xl text-slate-300 hover:bg-sidebar-hover hover:text-white" href="#"><span class="material-symbols-outlined">receipt_long</span><span>Invoicing</span></a>
+            </nav>
+        </div>
     </div>
+    
+    <!-- ================= MAIN CONTENT AREA ================= -->
+    <main class="flex-1 md:ml-64 flex flex-col w-full min-h-screen">
+        
+        <!-- Header -->
+        <header class="h-16 glass flex items-center justify-between px-4 md:px-8 sticky top-0 z-10 shadow-sm border-b border-slate-200 dark:border-slate-800">
+            <!-- Left Side -->
+            <div class="flex items-center gap-3 flex-1">
+                <button class="md:hidden p-2.5 rounded-xl hover:bg-primary/10 text-slate-600 dark:text-slate-300 hover:text-primary transition-all duration-300" id="mobile-menu-btn">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+                            
+                <!-- Global Search -->
+                <div class="relative w-full max-w-lg group hidden sm:block">
+                    <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-primary transition-colors duration-300">search</span>
+                    <input class="input-glow w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full pl-12 pr-4 py-2.5 text-sm transition-all duration-300 shadow-inner" placeholder="Search Sample ID, Patient, or Report..." type="text"/>
+                    <kbd class="absolute right-4 top-1/2 -translate-y-1/2 px-2 py-1 text-[10px] font-semibold text-slate-400 bg-slate-100 dark:bg-slate-700 rounded-md hidden lg:inline-block border border-slate-200 dark:border-slate-600">⌘K</kbd>
+                </div>
+            </div>
+            
+            <!-- Right Side Actions -->
+            <div class="flex items-center gap-2 md:gap-3">
+                <button class="btn-ripple relative w-10 h-10 flex items-center justify-center rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:text-primary hover:border-primary transition-all duration-300 group shadow-sm">
+                    <span class="material-symbols-outlined group-hover:scale-110 transition-transform duration-300">notifications</span>
+                    <span class="absolute top-0 right-0 w-3 h-3 bg-red-500 rounded-full border-2 border-white dark:border-slate-800 animate-pulse"></span>
+                </button>
+                
+                <div class="hidden md:block w-px h-6 bg-slate-300 dark:bg-slate-700 mx-1"></div>
+                
+                <!-- Theme Toggle -->
+                <button class="btn-ripple w-10 h-10 flex items-center justify-center rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:text-primary hover:border-primary transition-all duration-300 group shadow-sm" id="theme-toggle">
+                    <span class="material-symbols-outlined group-hover:rotate-180 transition-all duration-500">dark_mode</span>
+                </button>
+            </div>
+        </header>
+        
+        <!-- Dashboard Body -->
+        <div class="p-4 md:p-8 space-y-6 md:space-y-8 page-transition pb-20">
+            
+            <!-- Welcome Header -->
+            <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
+                <div>
+                    <div class="flex items-center gap-3 mb-1">
+                        <h2 class="text-2xl md:text-3xl font-black text-slate-800 dark:text-white">Dashboard Overview</h2>
+                        <span class="px-3 py-1 text-[10px] font-bold bg-accent/10 text-accent border border-accent/20 rounded-full flex items-center gap-1">
+                            <span class="w-1.5 h-1.5 bg-accent rounded-full animate-pulse"></span> Live
+                        </span>
+                    </div>
+                    <p class="text-sm text-slate-500 dark:text-slate-400">Monitor your laboratory operations and pending tasks.</p>
+                </div>
+                
+                <!-- Main CTA -->
+                <button class="btn-ripple group relative px-6 py-2.5 rounded-xl bg-primary text-white font-semibold shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 hover:-translate-y-0.5 transition-all duration-300 flex items-center gap-2 overflow-hidden">
+                    <span class="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></span>
+                    <span class="material-symbols-outlined text-lg group-hover:rotate-90 transition-transform duration-300">add_circle</span>
+                    <span>New Lab Report</span>
+                </button>
+            </div>
+            
+            <!-- KPI Stat Cards -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+                <!-- Card 1 -->
+                <div class="card bg-card dark:bg-slate-800 p-5 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 stagger-1">
+                    <div class="flex justify-between items-start">
+                        <div class="p-3 bg-blue-50 dark:bg-blue-900/20 rounded-xl text-primary">
+                            <span class="material-symbols-outlined text-2xl">science</span>
+                        </div>
+                        <span class="px-2 py-1 bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 text-[10px] font-bold rounded-lg flex items-center gap-1">
+                            +12% <span class="material-symbols-outlined text-[12px]">trending_up</span>
+                        </span>
+                    </div>
+                    <div class="mt-4">
+                        <p class="text-slate-500 dark:text-slate-400 text-xs font-semibold uppercase tracking-wider">Samples Today</p>
+                        <p class="text-3xl font-black mt-1 text-slate-800 dark:text-white">342</p>
+                        <div class="mt-3 h-1.5 w-full bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
+                            <div class="progress-animate h-full bg-primary rounded-full" style="width: 78%;"></div>
+                        </div>
+                    </div>
+                </div>
 
-    <!-- Navigation Links -->
-    <nav class="space-y-2 flex-1 overflow-y-auto">
-      <a class="flex items-center gap-3 px-4 py-3 text-primary bg-primary/5 rounded-xl font-bold" href="/Admin/admin.html">Dashboard</a>
-      <a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-slate-50 rounded-xl" href="/Admin/patient.html">Patients</a>
-      <a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-slate-50 rounded-xl" href="/Admin/LabReport.html">Lab Reports</a>
-      <a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-slate-50 rounded-xl" href="/Admin/Analytics.html">Analytics</a>
-      <a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-slate-50 rounded-xl" href="/Admin/Invoicing.html">Invoicing</a>
-    </nav>
+                <!-- Card 2 -->
+                <div class="card bg-card dark:bg-slate-800 p-5 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 stagger-2">
+                    <div class="flex justify-between items-start">
+                        <div class="p-3 bg-teal-50 dark:bg-teal-900/20 rounded-xl text-accent">
+                            <span class="material-symbols-outlined text-2xl">task_alt</span>
+                        </div>
+                        <span class="px-2 py-1 bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 text-[10px] font-bold rounded-lg flex items-center gap-1">
+                            Optimal
+                        </span>
+                    </div>
+                    <div class="mt-4">
+                        <p class="text-slate-500 dark:text-slate-400 text-xs font-semibold uppercase tracking-wider">Completed Reports</p>
+                        <p class="text-3xl font-black mt-1 text-slate-800 dark:text-white">289</p>
+                        <div class="mt-3 h-1.5 w-full bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
+                            <div class="progress-animate h-full bg-accent rounded-full" style="width: 85%;"></div>
+                        </div>
+                    </div>
+                </div>
 
-  </div>
-</div>
-<!-- END: Sidebar -->
-<!-- Main Content Wrapper -->
-<main class="flex-1 flex flex-col min-w-0 overflow-y-auto overflow-x-hidden">
-<!-- BEGIN: Top Navigation -->
-<header class="sticky top-0 z-40 glass-nav px-4 md:px-8 py-4 flex items-center justify-between">
-<div class="flex items-center flex-1 max-w-xl">
-<div class="relative w-full group">
-<!-- <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400">
-<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
-</span> -->
-<input class=" w-full bg-slate-100 border-none rounded-xl pl-10 pr-4 py-2 text-sm focus:ring-2 focus:ring-primary/20 transition-all" placeholder="Search patients, reports, or ID..." type="text"/>
-<!-- <button class=" p-2 text-slate-500 hover:bg-slate-100 rounded-lg">
-<svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
-</button> -->
-</div>
-</div>
-<div class="flex items-center gap-2 md:gap-6">
-<div class="relative">
-<button class="p-2 text-slate-500 hover:bg-slate-100 rounded-full relative">
-<svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
-<span class="absolute top-2.5 right-2.5 w-2 h-2 bg-primary rounded-full ring-2 ring-white"></span>
-</button>
-</div>
-<button class="md:hidden p-2 text-slate-600 hover:bg-slate-100 rounded-lg" id="mobile-menu-btn">
-<svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 6h16M4 12h16m-7 6h7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
-</button>
-</div>
-</header>
-<!-- END: Top Navigation -->
-<!-- Dashboard Content -->
-<div class="p-8 space-y-8">
-<!-- BEGIN: Hero Section -->
-<section class="relative overflow-hidden rounded-3xl gradient-bg p-10 border border-white/10 shadow-2xl" data-purpose="hero">
-<div class="relative z-10 flex flex-col md:flex-row justify-between items-center gap-6">
-<div>
-<h1 class="font-heading text-4xl font-extrabold text-slate-900 tracking-tight">Good morning, Admin</h1>
-<p class="text-slate-500 mt-2 text-lg">Here's what's happening in your lab today. System is running at <span class="text-emerald-600 font-bold">98.4% efficiency</span>.</p>
-</div>
-<button class="bg-primary hover:bg-primary-dark text-white px-8 py-3.5 rounded-xl font-bold transition-all flex items-center gap-2 shadow-lg shadow-primary/20">
-<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 4v16m8-8H4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
-            Create New Test Case
-          </button>
-</div>
-<div class="absolute -top-24 -right-24 w-64 h-64 bg-primary/5 rounded-full blur-[100px]"></div>
-<div class="absolute -bottom-24 -left-24 w-64 h-64 bg-orange-100/30 rounded-full blur-[100px]"></div>
-</section>
-<!-- END: Hero Section -->
-<!-- BEGIN: Key Metrics -->
-<section class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6" data-purpose="metrics-grid"><!-- Metric: Total Patients -->
-<div class="glass-card p-6 rounded-2xl">
-<div class="flex justify-between items-start mb-4">
-<div class="p-3 bg-blue-50 rounded-xl text-blue-600">
-<svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
-</div>
-<span class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-1 rounded-md">+12.5%</span>
-</div>
-<h3 class="text-slate-500 text-xs font-bold uppercase tracking-wider">Total Patients</h3>
-<p class="text-3xl font-extrabold text-slate-900 mt-1">1,482</p>
-<div class="mt-4 h-8 flex items-end gap-1.5">
-<div class="flex-1 bg-slate-100 rounded-sm h-3"></div>
-<div class="flex-1 bg-slate-100 rounded-sm h-5"></div>
-<div class="flex-1 bg-slate-100 rounded-sm h-4"></div>
-<div class="flex-1 bg-blue-100 rounded-sm h-7"></div>
-<div class="flex-1 bg-blue-200 rounded-sm h-6"></div>
-<div class="flex-1 bg-blue-500 rounded-sm h-8"></div>
-</div>
-</div>
-<!-- Metric: Total Tests Today -->
-<div class="glass-card p-6 rounded-2xl relative overflow-hidden">
-<div class="flex justify-between items-start mb-4">
-<div class="p-3 bg-orange-50 rounded-xl text-primary">
-<svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
-</div>
-<span class="flex items-center gap-1.5 text-xs font-bold text-primary">
-<span class="w-2 h-2 bg-primary rounded-full pulse-orange"></span>
-              ACTIVE
-            </span>
-</div>
-<h3 class="text-slate-500 text-xs font-bold uppercase tracking-wider">Tests Today</h3>
-<p class="text-3xl font-extrabold text-slate-900 mt-1">284</p>
-<p class="text-xs text-slate-400 mt-4 font-medium">22 scheduled in the next hour</p>
-</div>
-<!-- Metric: Pending Reports -->
-<div class="glass-card p-6 rounded-2xl">
-<div class="flex justify-between items-start mb-4">
-<div class="p-3 bg-amber-50 rounded-xl text-amber-600">
-<svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
-</div>
-</div>
-<h3 class="text-slate-500 text-xs font-bold uppercase tracking-wider">Pending Reports</h3>
-<p class="text-3xl font-extrabold text-slate-900 mt-1">45</p>
-<div class="w-full bg-slate-100 h-2 rounded-full mt-4 overflow-hidden">
-<div class="bg-amber-500 h-full w-[45%]"></div>
-</div>
-</div>
-<!-- Metric: Completed Reports -->
-<div class="glass-card p-6 rounded-2xl">
-<div class="flex justify-between items-start mb-4">
-<div class="p-3 bg-emerald-50 rounded-xl text-emerald-600">
-<svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
-</div>
-</div>
-<h3 class="text-slate-500 text-xs font-bold uppercase tracking-wider">Completed Today</h3>
-<p class="text-3xl font-extrabold text-slate-900 mt-1">112</p>
-<p class="text-xs text-slate-400 mt-4 font-medium">98% satisfaction rate</p>
-</div></section>
-<!-- END: Key Metrics -->
-<!-- BEGIN: Revenue and Operational Info -->
-<section class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-<!-- Revenue Analytics Chart Placeholder -->
-<div class="lg:col-span-2 glass-card p-8 rounded-3xl">
-<div class="flex justify-between items-center mb-8">
-<div>
-<h2 class="font-heading text-xl font-bold text-slate-900">Revenue Analytics</h2>
-<p class="text-slate-500 text-sm">Financial overview for the last 30 days</p>
-</div>
-<select class="bg-slate-50 border-slate-200 rounded-lg text-sm text-slate-600 focus:ring-primary focus:border-primary">
-<option>Last 30 Days</option>
-<option>Last Quarter</option>
-</select>
-</div>
-<div class="relative h-[300px] w-full bg-slate-50/50 rounded-2xl flex items-end p-4">
-<svg class="absolute inset-0 h-full w-full" preserveaspectratio="none">
-<defs>
-<lineargradient id="gradient-area-light" x1="0%" x2="0%" y1="0%" y2="100%">
-<stop offset="0%" stop-color="#ec5b13" stop-opacity="0.1"></stop>
-<stop offset="100%" stop-color="#ec5b13" stop-opacity="0"></stop>
-</lineargradient>
-</defs>
-<path d="M0 300 L100 240 L200 260 L300 180 L400 200 L500 120 L600 150 L700 80 L800 110 V300 H0 Z" fill="url(#gradient-area-light)"></path>
-<path d="M0 300 L100 240 L200 260 L300 180 L400 200 L500 120 L600 150 L700 80 L800 110" fill="none" stroke="#ec5b13" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></path>
-</svg>
-<div class="absolute bottom-4 left-0 right-0 flex justify-between px-8 text-[11px] text-slate-400 font-bold uppercase tracking-wider">
-<span>Week 1</span><span>Week 2</span><span>Week 3</span><span>Week 4</span>
-</div>
-</div>
-<div class="grid grid-cols-3 gap-4 mt-8">
-<div class="text-center">
-<p class="text-slate-400 text-xs font-bold uppercase tracking-tighter">Gross Income</p>
-<p class="text-2xl font-extrabold text-slate-900">$24,850</p>
-</div>
-<div class="text-center border-x border-slate-100">
-<p class="text-slate-400 text-xs font-bold uppercase tracking-tighter">Net Profit</p>
-<p class="text-2xl font-extrabold text-slate-900 text-primary">$18,420</p>
-</div>
-<div class="text-center">
-<p class="text-slate-400 text-xs font-bold uppercase tracking-tighter">Avg Ticket</p>
-<p class="text-2xl font-extrabold text-slate-900">$165</p>
-</div>
-</div>
-</div>
-<!-- Operational Health & Timeline -->
-<div class="flex flex-col gap-8"><!-- Operational Health Gauge -->
-<div class="glass-card p-6 rounded-3xl flex-1">
-<h3 class="font-heading font-bold mb-6 text-slate-900">Operational Health</h3>
-<div class="flex justify-center relative py-4">
-<svg class="w-40 h-40 transform -rotate-90">
-<circle cx="80" cy="80" fill="none" r="70" stroke="#f1f5f9" stroke-width="12"></circle>
-<circle cx="80" cy="80" fill="none" r="70" stroke="#ec5b13" stroke-dasharray="440" stroke-dashoffset="66" stroke-linecap="round" stroke-width="12"></circle>
-</svg>
-<div class="absolute inset-0 flex flex-col items-center justify-center">
-<span class="text-3xl font-extrabold text-slate-900">85%</span>
-<span class="text-xs text-slate-500 font-bold uppercase">Efficiency</span>
-</div>
-</div>
-<p class="text-center text-sm text-slate-500 mt-2 font-medium">Test completion vs. target today</p>
-</div>
-<!-- Activity Timeline -->
-<div class="glass-card p-6 rounded-3xl flex-[2]">
-<h3 class="font-heading font-bold mb-6 text-slate-900">Recent Activity</h3>
-<div class="space-y-6">
-<div class="flex gap-4">
-<div class="relative">
-<div class="w-8 h-8 rounded-full bg-orange-50 flex items-center justify-center text-primary z-10 relative">
-<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 4v16m8-8H4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
-</div>
-<div class="absolute top-8 bottom-[-24px] left-1/2 -translate-x-1/2 w-px bg-slate-100"></div>
-</div>
-<div>
-<p class="text-sm font-bold text-slate-900">New Patient Added</p>
-<p class="text-xs text-slate-400 font-medium">Sarah Jenkins • 12 mins ago</p>
-</div>
-</div>
-<div class="flex gap-4">
-<div class="relative">
-<div class="w-8 h-8 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-600 z-10 relative">
-<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
-</div>
-<div class="absolute top-8 bottom-[-24px] left-1/2 -translate-x-1/2 w-px bg-slate-100"></div>
-</div>
-<div>
-<p class="text-sm font-bold text-slate-900">Report Approved</p>
-<p class="text-xs text-slate-400 font-medium">Blood Profile #8821 • 45 mins ago</p>
-</div>
-</div>
-<div class="flex gap-4">
-<div class="relative">
-<div class="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center text-blue-600 z-10 relative">
-<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
-</div>
-</div>
-<div>
-<p class="text-sm font-bold text-slate-900">Invoice Generated</p>
-<p class="text-xs text-slate-400 font-medium">$450.00 • 2 hours ago</p>
-</div>
-</div>
-</div>
-<button class="w-full mt-8 py-2.5 text-sm font-bold text-slate-500 hover:text-primary transition-colors border border-slate-100 rounded-xl hover:bg-slate-50">View All Logs</button>
-</div></div>
-</section>
-<!-- END: Revenue and Operational Info -->
+                <!-- Card 3 -->
+                <div class="card bg-card dark:bg-slate-800 p-5 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 stagger-3">
+                    <div class="flex justify-between items-start">
+                        <div class="p-3 bg-amber-50 dark:bg-amber-900/20 rounded-xl text-amber-500">
+                            <span class="material-symbols-outlined text-2xl">pending_actions</span>
+                        </div>
+                        <span class="px-2 py-1 bg-amber-50 dark:bg-amber-900/20 text-amber-600 text-[10px] font-bold rounded-lg flex items-center gap-1">
+                            12 Urgent
+                        </span>
+                    </div>
+                    <div class="mt-4">
+                        <p class="text-slate-500 dark:text-slate-400 text-xs font-semibold uppercase tracking-wider">Pending Results</p>
+                        <p class="text-3xl font-black mt-1 text-slate-800 dark:text-white">53</p>
+                        <div class="mt-3 h-1.5 w-full bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
+                            <div class="progress-animate h-full bg-amber-500 rounded-full" style="width: 35%;"></div>
+                        </div>
+                    </div>
+                </div>
 
-<!-- END: Bottom Footer -->
-</div>
-</main>
-<script data-purpose="dashboard-interactivity">
-    const mobileBtn = document.getElementById('mobile-menu-btn');
-    const closeBtn = document.getElementById('close-mobile-menu');
-    const mobileSidebar = document.getElementById('mobile-sidebar');
-    const overlay = document.getElementById('mobile-sidebar-overlay');
+                <!-- Card 4 -->
+                <div class="card bg-card dark:bg-slate-800 p-5 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 stagger-4">
+                    <div class="flex justify-between items-start">
+                        <div class="p-3 bg-indigo-50 dark:bg-indigo-900/20 rounded-xl text-indigo-600">
+                            <span class="material-symbols-outlined text-2xl">account_balance_wallet</span>
+                        </div>
+                        <span class="px-2 py-1 bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 text-[10px] font-bold rounded-lg flex items-center gap-1">
+                            +5% <span class="material-symbols-outlined text-[12px]">trending_up</span>
+                        </span>
+                    </div>
+                    <div class="mt-4">
+                        <p class="text-slate-500 dark:text-slate-400 text-xs font-semibold uppercase tracking-wider">Today's Revenue</p>
+                        <p class="text-3xl font-black mt-1 text-slate-800 dark:text-white">$8,450</p>
+                        <div class="mt-3 h-1.5 w-full bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
+                            <div class="progress-animate h-full bg-indigo-500 rounded-full" style="width: 60%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Quick Navigation Pills -->
+            <div class="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
+                <button class="flex items-center gap-2 px-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full text-sm font-semibold text-slate-700 dark:text-slate-300 hover:border-primary hover:text-primary transition-all whitespace-nowrap shadow-sm">
+                    <span class="material-symbols-outlined text-base">person_add</span> Register Patient
+                </button>
+                <button class="flex items-center gap-2 px-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full text-sm font-semibold text-slate-700 dark:text-slate-300 hover:border-accent hover:text-accent transition-all whitespace-nowrap shadow-sm">
+                    <span class="material-symbols-outlined text-base">print</span> Print Barcodes
+                </button>
+                <button class="flex items-center gap-2 px-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full text-sm font-semibold text-slate-700 dark:text-slate-300 hover:border-primary hover:text-primary transition-all whitespace-nowrap shadow-sm">
+                    <span class="material-symbols-outlined text-base">inventory_2</span> Order Reagents
+                </button>
+                <button class="flex items-center gap-2 px-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full text-sm font-semibold text-slate-700 dark:text-slate-300 hover:border-indigo-500 hover:text-indigo-500 transition-all whitespace-nowrap shadow-sm">
+                    <span class="material-symbols-outlined text-base">receipt</span> Generate Invoice
+                </button>
+            </div>
 
-    mobileBtn.addEventListener('click', () => mobileSidebar.classList.remove('hidden'));
-    closeBtn.addEventListener('click', () => mobileSidebar.classList.add('hidden'));
-    overlay.addEventListener('click', () => mobileSidebar.classList.add('hidden'));
+            <!-- Charts & Tables Section -->
+            <div class="grid grid-cols-1 xl:grid-cols-3 gap-6">
+                
+                <!-- Main Analytics Chart -->
+                <div class="xl:col-span-2 bg-card dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700">
+                    <div class="flex justify-between items-center mb-6">
+                        <div>
+                            <h3 class="text-lg font-bold text-slate-800 dark:text-white">Sample Processing Volume</h3>
+                            <p class="text-xs text-slate-500">Last 7 days performance</p>
+                        </div>
+                        <select class="bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm rounded-lg px-3 py-1.5 focus:ring-primary focus:border-primary outline-none">
+                            <option>This Week</option>
+                            <option>Last Week</option>
+                        </select>
+                    </div>
+                    
+                    <!-- SVG Chart adapted to new colors -->
+                    <div class="h-64 w-full relative">
+                        <svg class="w-full h-full" preserveAspectRatio="none" viewBox="0 0 800 200">
+                            <defs>
+                                <linearGradient id="gradient" x1="0" x2="0" y1="0" y2="1">
+                                    <stop offset="0%" stop-color="#2563EB" stop-opacity="0.2"></stop>
+                                    <stop offset="100%" stop-color="#2563EB" stop-opacity="0"></stop>
+                                </linearGradient>
+                                <linearGradient id="lineGradient" x1="0" y1="0" x2="1" y2="0">
+                                    <stop offset="0%" stop-color="#2563EB"/>
+                                    <stop offset="100%" stop-color="#14B8A6"/>
+                                </linearGradient>
+                            </defs>
+                            <!-- Grid lines -->
+                            <line class="text-slate-100 dark:text-slate-700" stroke="currentColor" stroke-dasharray="4" x1="0" x2="800" y1="50" y2="50"></line>
+                            <line class="text-slate-100 dark:text-slate-700" stroke="currentColor" stroke-dasharray="4" x1="0" x2="800" y1="100" y2="100"></line>
+                            <line class="text-slate-100 dark:text-slate-700" stroke="currentColor" stroke-dasharray="4" x1="0" x2="800" y1="150" y2="150"></line>
+                            
+                            <!-- Area Fill -->
+                            <path d="M0,150 Q100,120 200,140 T400,80 T600,60 T800,40 L800,200 L0,200 Z" fill="url(#gradient)"></path>
+                            <!-- Line -->
+                            <path d="M0,150 Q100,120 200,140 T400,80 T600,60 T800,40" fill="none" stroke="url(#lineGradient)" stroke-linecap="round" stroke-width="4">
+                                <animate attributeName="stroke-dasharray" from="0,1000" to="1000,0" dur="1.5s" fill="freeze"/>
+                            </path>
+                            
+                            <!-- Data Points -->
+                            <circle cx="200" cy="140" fill="#2563EB" r="5" stroke="#fff" stroke-width="2" class="animate-pulse"></circle>
+                            <circle cx="400" cy="80" fill="#2563EB" r="5" stroke="#fff" stroke-width="2" class="animate-pulse"></circle>
+                            <circle cx="600" cy="60" fill="#14B8A6" r="5" stroke="#fff" stroke-width="2" class="animate-pulse"></circle>
+                            <circle cx="800" cy="40" fill="#14B8A6" r="6" stroke="#fff" stroke-width="2" class="animate-pulse">
+                                <animate attributeName="r" values="4;8;4" dur="2s" repeatCount="indefinite"/>
+                            </circle>
+                        </svg>
+                        <div class="flex justify-between mt-2 text-xs font-semibold text-slate-400">
+                            <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span class="text-primary font-bold">Today</span>
+                        </div>
+                    </div>
+                </div>
 
-    console.log("Premium Light LMS Dashboard Initialized");
-  </script>
-</body></html>
+                <!-- Recent Lab Reports Table -->
+                <div class="bg-card dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden flex flex-col">
+                    <div class="p-5 border-b border-slate-100 dark:border-slate-700 flex justify-between items-center bg-slate-50/50 dark:bg-slate-800/50">
+                        <h3 class="text-base font-bold text-slate-800 dark:text-white flex items-center gap-2">
+                            <span class="material-symbols-outlined text-primary text-xl">biotech</span> Recent Reports
+                        </h3>
+                        <a href="#" class="text-xs font-semibold text-primary hover:underline">View All</a>
+                    </div>
+                    
+                    <div class="divide-y divide-slate-100 dark:divide-slate-700 flex-1 overflow-y-auto">
+                        <!-- Item 1 -->
+                        <div class="p-4 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors cursor-pointer group flex justify-between items-center">
+                            <div>
+                                <p class="text-sm font-bold text-slate-800 dark:text-white group-hover:text-primary transition-colors">Complete Blood Count</p>
+                                <p class="text-xs text-slate-500">Patient: John Doe • ID: #9821</p>
+                            </div>
+                            <span class="px-2 py-1 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 text-[10px] font-bold rounded">Ready</span>
+                        </div>
+                        <!-- Item 2 -->
+                        <div class="p-4 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors cursor-pointer group flex justify-between items-center">
+                            <div>
+                                <p class="text-sm font-bold text-slate-800 dark:text-white group-hover:text-primary transition-colors">Lipid Profile</p>
+                                <p class="text-xs text-slate-500">Patient: Sarah Smith • ID: #9822</p>
+                            </div>
+                            <span class="px-2 py-1 bg-amber-100 dark:bg-amber-900/30 text-amber-600 text-[10px] font-bold rounded flex items-center gap-1">
+                                <span class="material-symbols-outlined text-[10px] animate-spin-slow">sync</span> Processing
+                            </span>
+                        </div>
+                        <!-- Item 3 -->
+                        <div class="p-4 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors cursor-pointer group flex justify-between items-center">
+                            <div>
+                                <p class="text-sm font-bold text-slate-800 dark:text-white group-hover:text-primary transition-colors">HbA1c Test</p>
+                                <p class="text-xs text-slate-500">Patient: Mike Ross • ID: #9823</p>
+                            </div>
+                            <span class="px-2 py-1 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 text-[10px] font-bold rounded">Ready</span>
+                        </div>
+                        <!-- Item 4 -->
+                        <div class="p-4 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors cursor-pointer group flex justify-between items-center">
+                            <div>
+                                <p class="text-sm font-bold text-slate-800 dark:text-white group-hover:text-primary transition-colors">Urinalysis</p>
+                                <p class="text-xs text-slate-500">Patient: Emma Wilson • ID: #9824</p>
+                            </div>
+                            <span class="px-2 py-1 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-[10px] font-bold rounded">Sample Collected</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </main>
+    
+    <!-- Scroll to Top Button -->
+    <button class="fixed bottom-6 right-6 w-12 h-12 bg-primary text-white rounded-full shadow-lg shadow-primary/30 flex items-center justify-center hover:scale-110 hover:bg-primary-dark transition-all duration-300 opacity-0 invisible z-50" id="scroll-to-top">
+        <span class="material-symbols-outlined">arrow_upward</span>
+    </button>
+    
+    <script>
+        // Mobile Sidebar Logic
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const closeBtn = document.getElementById('close-mobile-menu');
+        const mobileSidebar = document.getElementById('mobile-sidebar');
+        const overlay = document.getElementById('mobile-sidebar-overlay');
+
+        function toggleMenu() {
+            mobileSidebar.classList.toggle('hidden');
+        }
+
+        if(mobileBtn) mobileBtn.addEventListener('click', toggleMenu);
+        if(closeBtn) closeBtn.addEventListener('click', toggleMenu);
+        if(overlay) overlay.addEventListener('click', toggleMenu);
+
+        // Scroll to Top Logic
+        const scrollTopBtn = document.getElementById('scroll-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 200) {
+                scrollTopBtn.classList.remove('opacity-0', 'invisible');
+                scrollTopBtn.classList.add('opacity-100', 'visible');
+            } else {
+                scrollTopBtn.classList.add('opacity-0', 'invisible');
+                scrollTopBtn.classList.remove('opacity-100', 'visible');
+            }
+        });
+        scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+        // Dark Mode Toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        themeToggle.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+            const icon = themeToggle.querySelector('.material-symbols-outlined');
+            icon.textContent = document.documentElement.classList.contains('dark') ? 'light_mode' : 'dark_mode';
+        });
+
+        // Ripple Effect
+        document.querySelectorAll('.btn-ripple').forEach(button => {
+            button.addEventListener('click', function(e) {
+                const rect = this.getBoundingClientRect();
+                const ripple = document.createElement('span');
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.cssText = `
+                    position: absolute; width: ${size}px; height: ${size}px;
+                    left: ${x}px; top: ${y}px; background: rgba(255, 255, 255, 0.4);
+                    border-radius: 50%; transform: scale(0);
+                    animation: ripple 0.6s ease-out; pointer-events: none;
+                `;
+                
+                this.style.position = 'relative';
+                this.style.overflow = 'hidden';
+                this.appendChild(ripple);
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+
+        // Add Keyframe for ripple dynamically
+        const style = document.createElement('style');
+        style.textContent = `@keyframes ripple { to { transform: scale(4); opacity: 0; } }`;
+        document.head.appendChild(style);
+
+    </script>
+</body>
+</html>
