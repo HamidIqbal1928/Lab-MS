@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-  <title>LabPro Admin - Patient Database</title>
+  <title>LabPro Admin - Inventory & Stock</title>
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <link
     href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&display=swap"
@@ -204,40 +204,40 @@
         </div>
       </a>
 
-      <!-- ACTIVE ITEM: Patients -->
-      <div
-        class="sidebar-item-active w-full py-3 px-6 md:px-0 md:pl-3 md:pr-0 flex items-center justify-start md:justify-end cursor-pointer group relative bg-brand-primary/10 border-r-4 border-brand-primary md:bg-transparent md:border-r-0">
-        <div
-          class="w-10 h-10 md:w-12 md:h-12 md:mr-3 shrink-0 bg-brand-primary rounded-xl shadow-lg shadow-brand-primary/50 flex items-center justify-center text-white relative z-10 md:scale-105 transition-transform">
-          <span class="material-symbols-rounded text-[22px] md:text-[26px]">group</span>
-        </div>
-        <span class="ml-4 md:hidden font-bold text-sm text-brand-primary">Patients</span>
-        <div
-          class="hidden md:flex absolute left-[85px] opacity-0 -translate-x-4 group-hover:translate-x-0 group-hover:opacity-100 items-center transition-all duration-300 z-50 pointer-events-none">
-          <div class="w-0 h-0 border-y-[6px] border-y-transparent border-r-[8px] border-r-slate-800"></div>
-          <span
-            class="bg-slate-800 text-white shadow-xl px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap border border-slate-700"> <a href="/Admin/patient.html">Patient Database</a>
-            </span>
-        </div>
-      </div>
-
-      <!-- INACTIVE ITEM: Inventory -->
-      <a href="/Admin/Inventory.html"
+      <!-- INACTIVE ITEM: Patients -->
+      <a href="/Admin/patient.html"
         class="w-full py-2 md:py-2.5 px-6 md:px-0 flex items-center justify-start md:justify-center text-slate-400 hover:text-white hover:bg-white/5 md:hover:bg-transparent transition-all group relative">
         <div class="w-10 h-10 md:w-12 md:h-12 shrink-0 flex items-center justify-center">
           <span
-            class="material-symbols-rounded text-[24px] md:text-[26px] group-hover:scale-125 group-hover:text-warning transition-all duration-300">inventory_2</span>
+            class="material-symbols-rounded text-[24px] md:text-[26px] group-hover:scale-125 group-hover:text-brand-accent transition-all duration-300">group</span>
         </div>
         <span
-          class="ml-4 md:hidden font-medium text-sm text-slate-300 group-hover:text-white transition-colors">Inventory</span>
+          class="ml-4 md:hidden font-medium text-sm text-slate-300 group-hover:text-white transition-colors">Patients</span>
         <div
           class="hidden md:flex absolute left-[75px] opacity-0 -translate-x-4 group-hover:translate-x-0 group-hover:opacity-100 items-center transition-all duration-300 z-50 pointer-events-none">
           <div class="w-0 h-0 border-y-[6px] border-y-transparent border-r-[8px] border-r-slate-800"></div>
           <span
-            class="bg-slate-800 text-white shadow-xl px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap border border-slate-700">Inventory
-            & Stock</span>
+            class="bg-slate-800 text-white shadow-xl px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap border border-slate-700">Patient
+            Database</span>
         </div>
       </a>
+
+      <!-- ACTIVE ITEM: Inventory -->
+      <div
+        class="sidebar-item-active w-full py-3 px-6 md:px-0 md:pl-3 md:pr-0 flex items-center justify-start md:justify-end cursor-pointer group relative bg-brand-primary/10 border-r-4 border-brand-primary md:bg-transparent md:border-r-0">
+        <div
+          class="w-10 h-10 md:w-12 md:h-12 md:mr-3 shrink-0 bg-brand-primary rounded-xl shadow-lg shadow-brand-primary/50 flex items-center justify-center text-white relative z-10 md:scale-105 transition-transform">
+          <span class="material-symbols-rounded text-[22px] md:text-[26px]">inventory_2</span>
+        </div>
+        <span class="ml-4 md:hidden font-bold text-sm text-brand-primary">Inventory</span>
+        <div
+          class="hidden md:flex absolute left-[85px] opacity-0 -translate-x-4 group-hover:translate-x-0 group-hover:opacity-100 items-center transition-all duration-300 z-50 pointer-events-none">
+          <div class="w-0 h-0 border-y-[6px] border-y-transparent border-r-[8px] border-r-slate-800"></div>
+          <span
+            class="bg-slate-800 text-white shadow-xl px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap border border-slate-700"> <a href="/Admin/Inventory.html"></a>Inventory
+            & Stock</span>
+        </div>
+      </div>
 
       <!-- INACTIVE ITEM: Analytics -->
       <a href="/Admin/LabReport.html"
@@ -294,10 +294,10 @@
         <div class="animate-fade-in-up">
           <h1 style="margin-left: 30px;"
             class="font-heading text-xl md:text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-slate-800 to-slate-600 tracking-tight ml-2 md:ml-0">
-            Patient Database
+            Inventory & Stock
           </h1>
-          <p class="text-[10px] md:text-xs text-slate-500 font-medium ml-2 md:ml-0" style="margin-left: 30px;">Manage and track laboratory clients
-          </p>
+          <p class="text-[10px] md:text-xs text-slate-500 font-medium ml-2 md:ml-0" style="margin-left: 30px;"> Manage lab supplies, reagents, and
+            equipment</p>
         </div>
       </div>
 
@@ -338,7 +338,7 @@
           <div class="relative w-full lg:max-w-md group">
             <span
               class="material-symbols-rounded absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-brand-primary transition-colors">search</span>
-            <input type="text" placeholder="Search by patient name, ID, or phone..."
+            <input type="text" placeholder="Search by SKU, item name, or batch..."
               class="w-full bg-white border border-slate-200 rounded-full pl-12 pr-4 py-3 text-sm font-medium text-slate-700 focus:ring-4 focus:ring-brand-light focus:border-brand-primary transition-all outline-none shadow-sm" />
           </div>
 
@@ -348,110 +348,141 @@
               class="flex items-center gap-2 px-4 py-2.5 bg-white border border-slate-200 rounded-xl text-sm font-bold text-slate-600 hover:text-brand-primary hover:border-brand-primary hover:shadow-sm transition-all whitespace-nowrap group">
               <span
                 class="material-symbols-rounded text-[18px] group-hover:rotate-180 transition-transform duration-500">filter_list</span>
-              Filter
+              Category
             </button>
             <button
               class="flex items-center gap-2 px-4 py-2.5 bg-white border border-slate-200 rounded-xl text-sm font-bold text-slate-600 hover:text-brand-primary hover:border-brand-primary hover:shadow-sm transition-all whitespace-nowrap group">
-              <span class="material-symbols-rounded text-[18px]">calendar_month</span>
-              Date Range
+              <span
+                class="material-symbols-rounded text-[18px] group-hover:-translate-y-0.5 transition-transform duration-300">download</span>
+              Export
             </button>
             <button
               class="flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-brand-primary to-indigo-600 rounded-xl text-sm font-bold text-white shadow-lg shadow-brand-primary/30 hover:shadow-brand-primary/50 hover:-translate-y-0.5 transition-all whitespace-nowrap group ml-auto lg:ml-0">
               <span
-                class="material-symbols-rounded text-[18px] group-hover:scale-125 transition-transform">person_add</span>
-              New Patient
+                class="material-symbols-rounded text-[18px] group-hover:rotate-90 transition-transform duration-300">add</span>
+              Add Item
             </button>
           </div>
         </div>
 
-        <!-- MINI STATS (3 Columns on Desktop, 2 on Mobile) -->
-        <div class="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6 animate-fade-in-up delay-100">
-          <!-- Stat 1 -->
-          <div class="bg-white border border-slate-200 rounded-2xl p-4 md:p-5 kpi-card flex items-center gap-4">
-            <div
-              class="w-10 h-10 md:w-12 md:h-12 bg-blue-50 text-blue-500 rounded-xl flex items-center justify-center shrink-0">
-              <span class="material-symbols-rounded text-[20px] md:text-[24px]">groups</span>
-            </div>
-            <div>
-              <p class="text-[10px] md:text-xs font-medium text-slate-400">Total Patients</p>
-              <h3 class="font-heading text-lg md:text-2xl font-bold text-slate-800">4,289</h3>
-            </div>
-          </div>
+        <!-- KPI CARDS (2x2 Grid on Mobile, 4 Cols on Desktop) -->
+        <div class="grid grid-cols-2 xl:grid-cols-4 gap-3 md:gap-6 animate-fade-in-up delay-100">
 
-          <!-- Stat 2 -->
-          <div class="bg-white border border-slate-200 rounded-2xl p-4 md:p-5 kpi-card flex items-center gap-4">
-            <div
-              class="w-10 h-10 md:w-12 md:h-12 bg-emerald-50 text-emerald-500 rounded-xl flex items-center justify-center shrink-0">
-              <span class="material-symbols-rounded text-[20px] md:text-[24px]">person_check</span>
-            </div>
-            <div>
-              <p class="text-[10px] md:text-xs font-medium text-slate-400">New This Month</p>
-              <div class="flex items-center gap-2">
-                <h3 class="font-heading text-lg md:text-2xl font-bold text-slate-800">128</h3>
-                <span
-                  class="text-[9px] md:text-[10px] font-bold text-emerald-600 bg-emerald-100 px-1.5 py-0.5 rounded">+12%</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Stat 3 (Spans 2 cols on mobile, 1 on desktop) -->
+          <!-- KPI 1: Total SKUs -->
           <div
-            class="bg-white border border-slate-200 rounded-2xl p-4 md:p-5 kpi-card flex items-center gap-4 col-span-2 lg:col-span-1">
-            <div
-              class="w-10 h-10 md:w-12 md:h-12 bg-orange-50 text-brand-warning rounded-xl flex items-center justify-center shrink-0 relative">
-              <span class="absolute -top-1 -right-1 w-2.5 h-2.5 bg-red-500 border-2 border-white rounded-full"></span>
-              <span class="material-symbols-rounded text-[20px] md:text-[24px]">science</span>
-            </div>
-            <div class="flex-1 flex justify-between items-center">
-              <div>
-                <p class="text-[10px] md:text-xs font-medium text-slate-400">Results Pending</p>
-                <h3 class="font-heading text-lg md:text-2xl font-bold text-slate-800">45</h3>
+            class="bg-white border border-slate-200 rounded-[20px] md:rounded-3xl p-4 md:p-6 kpi-card flex flex-col justify-between group cursor-pointer">
+            <div class="flex flex-col sm:flex-row justify-between items-start gap-2 mb-3 md:mb-4">
+              <div
+                class="w-8 h-8 md:w-12 md:h-12 bg-blue-50 text-blue-500 rounded-lg md:rounded-2xl flex items-center justify-center group-hover:bg-blue-500 group-hover:text-white transition-colors duration-300">
+                <span
+                  class="material-symbols-rounded text-[18px] md:text-[24px] group-hover:scale-110 transition-transform">category</span>
               </div>
-              <button
-                class="text-xs font-bold text-brand-primary bg-brand-light/50 px-3 py-1.5 rounded-lg hover:bg-brand-light transition-colors">View</button>
+            </div>
+            <div class="group-hover:translate-x-1 transition-transform duration-300">
+              <p class="text-slate-500 text-[10px] md:text-sm font-medium mb-0.5 md:mb-1 truncate">Total Items</p>
+              <h3 class="font-heading text-xl sm:text-2xl md:text-4xl font-bold text-slate-800 tracking-tight truncate">
+                1,245</h3>
             </div>
           </div>
+
+          <!-- KPI 2: Low Stock -->
+          <div
+            class="bg-white border border-slate-200 rounded-[20px] md:rounded-3xl p-4 md:p-6 kpi-card flex flex-col justify-between group cursor-pointer">
+            <div class="flex flex-col sm:flex-row justify-between items-start gap-2 mb-3 md:mb-4">
+              <div
+                class="w-8 h-8 md:w-12 md:h-12 bg-orange-50 text-brand-warning rounded-lg md:rounded-2xl flex items-center justify-center group-hover:bg-brand-warning group-hover:text-white transition-colors duration-300 relative">
+                <span
+                  class="absolute -top-1 -right-1 md:top-0 md:right-0 w-2.5 h-2.5 md:w-3 md:h-3 bg-brand-warning border-2 border-white rounded-full animate-pulse"></span>
+                <span
+                  class="material-symbols-rounded text-[18px] md:text-[24px] group-hover:scale-110 transition-transform">warning</span>
+              </div>
+            </div>
+            <div class="group-hover:translate-x-1 transition-transform duration-300">
+              <p class="text-slate-500 text-[10px] md:text-sm font-medium mb-0.5 md:mb-1 truncate">Low Stock Alerts</p>
+              <h3 class="font-heading text-xl sm:text-2xl md:text-4xl font-bold text-slate-800 tracking-tight truncate">
+                24</h3>
+            </div>
+          </div>
+
+          <!-- KPI 3: Out of Stock -->
+          <div
+            class="bg-white border border-slate-200 rounded-[20px] md:rounded-3xl p-4 md:p-6 kpi-card flex flex-col justify-between group cursor-pointer">
+            <div class="flex flex-col sm:flex-row justify-between items-start gap-2 mb-3 md:mb-4">
+              <div
+                class="w-8 h-8 md:w-12 md:h-12 bg-red-50 text-brand-danger rounded-lg md:rounded-2xl flex items-center justify-center group-hover:bg-brand-danger group-hover:text-white transition-colors duration-300">
+                <span
+                  class="material-symbols-rounded text-[18px] md:text-[24px] group-hover:scale-110 transition-transform">error</span>
+              </div>
+            </div>
+            <div class="group-hover:translate-x-1 transition-transform duration-300">
+              <p class="text-slate-500 text-[10px] md:text-sm font-medium mb-0.5 md:mb-1 truncate">Out of Stock</p>
+              <h3 class="font-heading text-xl sm:text-2xl md:text-4xl font-bold text-slate-800 tracking-tight truncate">
+                3</h3>
+            </div>
+          </div>
+
+          <!-- KPI 4: Inventory Value -->
+          <div
+            class="bg-gradient-to-br from-teal-500 to-emerald-600 rounded-[20px] md:rounded-3xl p-4 md:p-6 text-white shadow-xl shadow-teal-500/30 relative overflow-hidden animate-fade-in-up delay-100 kpi-card group cursor-pointer flex flex-col justify-between">
+            <div
+              class="absolute -right-10 -top-10 w-32 h-32 md:w-40 md:h-40 bg-white/10 rounded-full blur-3xl group-hover:bg-white/20 transition-all duration-700">
+            </div>
+
+            <div class="flex flex-col sm:flex-row justify-between items-start gap-2 mb-3 md:mb-4 relative z-10">
+              <div
+                class="w-8 h-8 md:w-12 md:h-12 bg-white/20 rounded-lg md:rounded-2xl flex items-center justify-center backdrop-blur-md border border-white/10 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
+                <span class="material-symbols-rounded text-white text-[18px] md:text-[24px]">payments</span>
+              </div>
+            </div>
+            <div class="relative z-10 group-hover:translate-x-1 transition-transform duration-300">
+              <p class="text-emerald-50 text-[10px] md:text-sm font-medium mb-0.5 md:mb-1 opacity-90 truncate">Total
+                Est. Value</p>
+              <h3 class="font-heading text-lg sm:text-xl md:text-4xl font-bold tracking-tight drop-shadow-md truncate">
+                $45,200</h3>
+            </div>
+          </div>
+
         </div>
 
-        <!-- MAIN DATA TABLE -->
+        <!-- MAIN DATA TABLE: INVENTORY -->
         <div
           class="bg-white border border-slate-200 rounded-[20px] md:rounded-3xl shadow-sm overflow-hidden animate-fade-in-up delay-200 transition-all hover:shadow-md">
 
           <!-- Table Header Area -->
           <div class="px-5 md:px-6 py-4 md:py-5 border-b border-slate-100 flex justify-between items-center bg-white">
-            <h2 class="font-heading font-bold text-lg md:text-xl text-slate-800">All Patients</h2>
+            <h2 class="font-heading font-bold text-lg md:text-xl text-slate-800">Stock Details</h2>
 
             <div class="flex items-center gap-2">
               <span class="text-xs font-medium text-slate-400 hidden md:block">Sort by:</span>
               <select
                 class="bg-slate-50 border border-slate-200 text-xs md:text-sm font-semibold text-slate-700 rounded-lg py-1.5 px-2 outline-none hover:border-brand-primary transition-colors cursor-pointer">
-                <option>Newest First</option>
+                <option>Stock Status</option>
+                <option>Expiry Date</option>
                 <option>A-Z</option>
-                <option>Last Visited</option>
               </select>
             </div>
           </div>
 
-          <!-- Table Wrapper (Scrollable on mobile) -->
+          <!-- Table Wrapper -->
           <div class="overflow-x-auto w-full">
-            <table class="w-full text-left border-collapse min-w-[900px]">
+            <table class="w-full text-left border-collapse min-w-[1000px]">
               <thead>
                 <tr class="bg-slate-50/80">
                   <th
                     class="px-5 md:px-6 py-4 text-[10px] md:text-xs font-bold text-slate-400 uppercase tracking-wider border-b border-slate-200">
-                    Patient</th>
+                    Item Details</th>
                   <th
                     class="px-5 md:px-6 py-4 text-[10px] md:text-xs font-bold text-slate-400 uppercase tracking-wider border-b border-slate-200">
-                    Contact Info</th>
+                    Category</th>
                   <th
                     class="px-5 md:px-6 py-4 text-[10px] md:text-xs font-bold text-slate-400 uppercase tracking-wider border-b border-slate-200">
-                    Age / Gender</th>
-                  <th
-                    class="px-5 md:px-6 py-4 text-[10px] md:text-xs font-bold text-slate-400 uppercase tracking-wider border-b border-slate-200">
-                    Last Visit</th>
+                    Stock Level</th>
                   <th
                     class="px-5 md:px-6 py-4 text-[10px] md:text-xs font-bold text-slate-400 uppercase tracking-wider border-b border-slate-200">
                     Status</th>
+                  <th
+                    class="px-5 md:px-6 py-4 text-[10px] md:text-xs font-bold text-slate-400 uppercase tracking-wider border-b border-slate-200">
+                    Expiry Date</th>
                   <th
                     class="px-5 md:px-6 py-4 text-[10px] md:text-xs font-bold text-slate-400 uppercase tracking-wider border-b border-slate-200 text-center">
                     Action</th>
@@ -459,96 +490,50 @@
               </thead>
               <tbody class="divide-y divide-slate-100">
 
-                <!-- Row 1 -->
+                <!-- Row 1: Healthy Stock -->
                 <tr class="hover:bg-brand-light/20 transition-all duration-300 group cursor-pointer">
                   <td class="px-5 md:px-6 py-4">
                     <div class="flex items-center gap-3 md:gap-4">
                       <div
-                        class="w-10 h-10 rounded-full bg-gradient-to-tr from-blue-100 to-indigo-100 text-brand-primary flex items-center justify-center text-sm font-bold shadow-sm ring-2 ring-white">
-                        EM</div>
+                        class="w-10 h-10 rounded-xl bg-blue-50 text-blue-500 flex items-center justify-center text-sm shadow-sm ring-1 ring-slate-200">
+                        <span class="material-symbols-rounded">science</span>
+                      </div>
                       <div>
-                        <p class="text-sm font-bold text-slate-800 group-hover:text-brand-primary transition-colors">
-                          Elena Martinez</p>
-                        <p class="text-[10px] md:text-xs text-slate-400 font-medium mt-0.5">ID: #PT-29384</p>
+                        <p class="text-sm font-bold text-slate-800 group-hover:text-brand-primary transition-colors">CBC
+                          Reagent Pack</p>
+                        <p class="text-[10px] md:text-xs text-slate-400 font-medium mt-0.5">SKU: REA-1001-A</p>
                       </div>
                     </div>
                   </td>
                   <td class="px-5 md:px-6 py-4">
-                    <p class="text-xs md:text-sm font-semibold text-slate-700">+1 (555) 019-2834</p>
-                    <p class="text-[10px] md:text-xs text-slate-400 mt-0.5">elena.m@example.com</p>
+                    <span class="text-xs md:text-sm font-semibold text-slate-700">Lab Reagents</span>
                   </td>
-                  <td class="px-5 md:px-6 py-4">
-                    <span class="text-xs md:text-sm font-semibold text-slate-700">32 yrs, Female</span>
-                  </td>
-                  <td class="px-5 md:px-6 py-4">
-                    <p class="text-xs md:text-sm font-semibold text-slate-700">Today, 10:24 AM</p>
-                    <p class="text-[10px] md:text-xs text-brand-primary font-medium mt-0.5">CBC Test</p>
-                  </td>
-                  <td class="px-5 md:px-6 py-4">
-                    <span
-                      class="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-[10px] md:text-xs font-bold bg-blue-50 text-blue-600 border border-blue-100 shadow-sm">
-                      <span class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse"></span> Processing
-                    </span>
-                  </td>
-                  <td class="px-5 md:px-6 py-4 text-center">
-                    <div
-                      class="flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <button
-                        class="w-8 h-8 rounded-lg bg-white text-slate-500 hover:text-brand-primary shadow-sm border border-slate-200 flex items-center justify-center hover:scale-105 transition-transform"
-                        title="View Profile">
-                        <span class="material-symbols-rounded text-[18px]">visibility</span>
-                      </button>
-                      <button
-                        class="w-8 h-8 rounded-lg bg-white text-slate-500 hover:text-brand-accent shadow-sm border border-slate-200 flex items-center justify-center hover:scale-105 transition-transform"
-                        title="Edit">
-                        <span class="material-symbols-rounded text-[18px]">edit</span>
-                      </button>
+                  <td class="px-5 md:px-6 py-4 w-48">
+                    <div class="flex justify-between text-[10px] md:text-xs font-semibold mb-1">
+                      <span class="text-slate-700">450 Units</span>
+                      <span class="text-slate-400">Max 500</span>
                     </div>
-                    <!-- Visible icon when not hovering (mobile fallback) -->
-                    <button
-                      class="md:hidden w-8 h-8 rounded-lg text-slate-400 flex items-center justify-center mx-auto">
-                      <span class="material-symbols-rounded text-[20px]">more_vert</span>
-                    </button>
-                  </td>
-                </tr>
-
-                <!-- Row 2 -->
-                <tr class="hover:bg-brand-light/20 transition-all duration-300 group cursor-pointer">
-                  <td class="px-5 md:px-6 py-4">
-                    <div class="flex items-center gap-3 md:gap-4">
-                      <img src="https://api.dicebear.com/7.x/notionists/svg?seed=John" alt="Avatar"
-                        class="w-10 h-10 rounded-full bg-slate-100 shadow-sm ring-2 ring-white" />
-                      <div>
-                        <p class="text-sm font-bold text-slate-800 group-hover:text-brand-primary transition-colors">
-                          John Smith</p>
-                        <p class="text-[10px] md:text-xs text-slate-400 font-medium mt-0.5">ID: #PT-29380</p>
-                      </div>
+                    <div class="w-full bg-slate-100 rounded-full h-1.5 md:h-2 overflow-hidden">
+                      <div class="bg-emerald-500 h-full rounded-full" style="width: 90%"></div>
                     </div>
-                  </td>
-                  <td class="px-5 md:px-6 py-4">
-                    <p class="text-xs md:text-sm font-semibold text-slate-700">+1 (555) 832-1192</p>
-                    <p class="text-[10px] md:text-xs text-slate-400 mt-0.5">john.smith@mail.com</p>
-                  </td>
-                  <td class="px-5 md:px-6 py-4">
-                    <span class="text-xs md:text-sm font-semibold text-slate-700">45 yrs, Male</span>
-                  </td>
-                  <td class="px-5 md:px-6 py-4">
-                    <p class="text-xs md:text-sm font-semibold text-slate-700">Mar 10, 2025</p>
-                    <p class="text-[10px] md:text-xs text-slate-400 font-medium mt-0.5">Lipid Profile</p>
                   </td>
                   <td class="px-5 md:px-6 py-4">
                     <span
                       class="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-[10px] md:text-xs font-bold bg-emerald-50 text-emerald-600 border border-emerald-100 shadow-sm">
-                      <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Results Ready
+                      <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> In Stock
                     </span>
+                  </td>
+                  <td class="px-5 md:px-6 py-4">
+                    <p class="text-xs md:text-sm font-semibold text-slate-700">Nov 15, 2026</p>
+                    <p class="text-[10px] md:text-xs text-slate-400 mt-0.5">Valid</p>
                   </td>
                   <td class="px-5 md:px-6 py-4 text-center">
                     <div
                       class="flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <button
                         class="w-8 h-8 rounded-lg bg-white text-slate-500 hover:text-brand-primary shadow-sm border border-slate-200 flex items-center justify-center hover:scale-105 transition-transform"
-                        title="View Profile">
-                        <span class="material-symbols-rounded text-[18px]">visibility</span>
+                        title="Order More">
+                        <span class="material-symbols-rounded text-[18px]">add_shopping_cart</span>
                       </button>
                       <button
                         class="w-8 h-8 rounded-lg bg-white text-slate-500 hover:text-brand-accent shadow-sm border border-slate-200 flex items-center justify-center hover:scale-105 transition-transform"
@@ -563,95 +548,167 @@
                   </td>
                 </tr>
 
-                <!-- Row 3 -->
+                <!-- Row 2: Low Stock Warning -->
+                <tr class="hover:bg-brand-light/20 transition-all duration-300 group cursor-pointer bg-orange-50/30">
+                  <td class="px-5 md:px-6 py-4">
+                    <div class="flex items-center gap-3 md:gap-4">
+                      <div
+                        class="w-10 h-10 rounded-xl bg-orange-50 text-orange-500 flex items-center justify-center text-sm shadow-sm ring-1 ring-slate-200">
+                        <span class="material-symbols-rounded">vaccines</span>
+                      </div>
+                      <div>
+                        <p class="text-sm font-bold text-slate-800 group-hover:text-brand-primary transition-colors">
+                          Disposable Syringes (5ml)</p>
+                        <p class="text-[10px] md:text-xs text-slate-400 font-medium mt-0.5">SKU: CON-2055-B</p>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="px-5 md:px-6 py-4">
+                    <span class="text-xs md:text-sm font-semibold text-slate-700">Consumables</span>
+                  </td>
+                  <td class="px-5 md:px-6 py-4 w-48">
+                    <div class="flex justify-between text-[10px] md:text-xs font-semibold mb-1">
+                      <span class="text-orange-600">45 Units</span>
+                      <span class="text-slate-400">Min 100</span>
+                    </div>
+                    <div class="w-full bg-slate-100 rounded-full h-1.5 md:h-2 overflow-hidden">
+                      <div class="bg-brand-warning h-full rounded-full animate-pulse-slow" style="width: 15%"></div>
+                    </div>
+                  </td>
+                  <td class="px-5 md:px-6 py-4">
+                    <span
+                      class="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-[10px] md:text-xs font-bold bg-orange-50 text-brand-warning border border-orange-200 shadow-sm">
+                      <span class="w-1.5 h-1.5 rounded-full bg-brand-warning"></span> Low Stock
+                    </span>
+                  </td>
+                  <td class="px-5 md:px-6 py-4">
+                    <p class="text-xs md:text-sm font-semibold text-slate-700">N/A</p>
+                    <p class="text-[10px] md:text-xs text-slate-400 mt-0.5">-</p>
+                  </td>
+                  <td class="px-5 md:px-6 py-4 text-center">
+                    <div
+                      class="flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <button
+                        class="w-8 h-8 rounded-lg bg-white text-slate-500 hover:text-brand-primary shadow-sm border border-brand-warning/50 flex items-center justify-center hover:scale-105 transition-transform ring-2 ring-brand-warning/20"
+                        title="Order More">
+                        <span class="material-symbols-rounded text-[18px]">add_shopping_cart</span>
+                      </button>
+                      <button
+                        class="w-8 h-8 rounded-lg bg-white text-slate-500 hover:text-brand-accent shadow-sm border border-slate-200 flex items-center justify-center hover:scale-105 transition-transform"
+                        title="Edit">
+                        <span class="material-symbols-rounded text-[18px]">edit</span>
+                      </button>
+                    </div>
+                    <button
+                      class="md:hidden w-8 h-8 rounded-lg text-slate-400 flex items-center justify-center mx-auto">
+                      <span class="material-symbols-rounded text-[20px]">more_vert</span>
+                    </button>
+                  </td>
+                </tr>
+
+                <!-- Row 3: Out of Stock -->
+                <tr class="hover:bg-brand-light/20 transition-all duration-300 group cursor-pointer bg-red-50/20">
+                  <td class="px-5 md:px-6 py-4">
+                    <div class="flex items-center gap-3 md:gap-4">
+                      <div
+                        class="w-10 h-10 rounded-xl bg-red-50 text-red-500 flex items-center justify-center text-sm shadow-sm ring-1 ring-slate-200">
+                        <span class="material-symbols-rounded">bloodtype</span>
+                      </div>
+                      <div>
+                        <p class="text-sm font-bold text-slate-800 group-hover:text-brand-primary transition-colors">
+                          Glucose Test Strips</p>
+                        <p class="text-[10px] md:text-xs text-slate-400 font-medium mt-0.5">SKU: DIA-4402-C</p>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="px-5 md:px-6 py-4">
+                    <span class="text-xs md:text-sm font-semibold text-slate-700">Diagnostics</span>
+                  </td>
+                  <td class="px-5 md:px-6 py-4 w-48">
+                    <div class="flex justify-between text-[10px] md:text-xs font-semibold mb-1">
+                      <span class="text-brand-danger">0 Units</span>
+                      <span class="text-slate-400">Min 50</span>
+                    </div>
+                    <div class="w-full bg-red-100 rounded-full h-1.5 md:h-2 overflow-hidden border border-red-200">
+                      <div class="bg-brand-danger h-full rounded-full" style="width: 0%"></div>
+                    </div>
+                  </td>
+                  <td class="px-5 md:px-6 py-4">
+                    <span
+                      class="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-[10px] md:text-xs font-bold bg-red-50 text-brand-danger border border-red-200 shadow-sm">
+                      <span class="w-1.5 h-1.5 rounded-full bg-brand-danger"></span> Out of Stock
+                    </span>
+                  </td>
+                  <td class="px-5 md:px-6 py-4">
+                    <p class="text-xs md:text-sm font-semibold text-slate-700">Aug 01, 2025</p>
+                    <p class="text-[10px] md:text-xs text-slate-400 mt-0.5">Valid</p>
+                  </td>
+                  <td class="px-5 md:px-6 py-4 text-center">
+                    <div
+                      class="flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <button
+                        class="w-8 h-8 rounded-lg bg-brand-primary text-white shadow-md border border-brand-primary flex items-center justify-center hover:scale-105 transition-transform"
+                        title="Order More">
+                        <span class="material-symbols-rounded text-[18px]">add_shopping_cart</span>
+                      </button>
+                      <button
+                        class="w-8 h-8 rounded-lg bg-white text-slate-500 hover:text-brand-accent shadow-sm border border-slate-200 flex items-center justify-center hover:scale-105 transition-transform"
+                        title="Edit">
+                        <span class="material-symbols-rounded text-[18px]">edit</span>
+                      </button>
+                    </div>
+                    <button
+                      class="md:hidden w-8 h-8 rounded-lg text-slate-400 flex items-center justify-center mx-auto">
+                      <span class="material-symbols-rounded text-[20px]">more_vert</span>
+                    </button>
+                  </td>
+                </tr>
+
+                <!-- Row 4: Expiring Soon -->
                 <tr class="hover:bg-brand-light/20 transition-all duration-300 group cursor-pointer">
                   <td class="px-5 md:px-6 py-4">
                     <div class="flex items-center gap-3 md:gap-4">
                       <div
-                        class="w-10 h-10 rounded-full bg-gradient-to-tr from-orange-100 to-red-100 text-orange-600 flex items-center justify-center text-sm font-bold shadow-sm ring-2 ring-white">
-                        AR</div>
+                        class="w-10 h-10 rounded-xl bg-purple-50 text-purple-500 flex items-center justify-center text-sm shadow-sm ring-1 ring-slate-200">
+                        <span class="material-symbols-rounded">biotech</span>
+                      </div>
                       <div>
                         <p class="text-sm font-bold text-slate-800 group-hover:text-brand-primary transition-colors">
-                          Aisha Rahman</p>
-                        <p class="text-[10px] md:text-xs text-slate-400 font-medium mt-0.5">ID: #PT-29375</p>
+                          Microscope Slides</p>
+                        <p class="text-[10px] md:text-xs text-slate-400 font-medium mt-0.5">SKU: EQ-9982-S</p>
                       </div>
                     </div>
                   </td>
                   <td class="px-5 md:px-6 py-4">
-                    <p class="text-xs md:text-sm font-semibold text-slate-700">+1 (555) 443-9901</p>
-                    <p class="text-[10px] md:text-xs text-slate-400 mt-0.5">aisha.r@domain.com</p>
+                    <span class="text-xs md:text-sm font-semibold text-slate-700">Equipment</span>
                   </td>
-                  <td class="px-5 md:px-6 py-4">
-                    <span class="text-xs md:text-sm font-semibold text-slate-700">28 yrs, Female</span>
-                  </td>
-                  <td class="px-5 md:px-6 py-4">
-                    <p class="text-xs md:text-sm font-semibold text-slate-700">Feb 28, 2025</p>
-                    <p class="text-[10px] md:text-xs text-slate-400 font-medium mt-0.5">General Consult</p>
+                  <td class="px-5 md:px-6 py-4 w-48">
+                    <div class="flex justify-between text-[10px] md:text-xs font-semibold mb-1">
+                      <span class="text-slate-700">850 Units</span>
+                      <span class="text-slate-400">Max 1000</span>
+                    </div>
+                    <div class="w-full bg-slate-100 rounded-full h-1.5 md:h-2 overflow-hidden">
+                      <div class="bg-emerald-500 h-full rounded-full" style="width: 85%"></div>
+                    </div>
                   </td>
                   <td class="px-5 md:px-6 py-4">
                     <span
-                      class="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-[10px] md:text-xs font-bold bg-slate-100 text-slate-500 border border-slate-200 shadow-sm">
-                      <span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span> Inactive
+                      class="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-[10px] md:text-xs font-bold bg-emerald-50 text-emerald-600 border border-emerald-100 shadow-sm">
+                      <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> In Stock
                     </span>
+                  </td>
+                  <td class="px-5 md:px-6 py-4">
+                    <p class="text-xs md:text-sm font-bold text-brand-warning flex items-center gap-1"><span
+                        class="material-symbols-rounded text-[14px]">warning</span> Apr 10, 2025</p>
+                    <p class="text-[10px] md:text-xs text-brand-warning mt-0.5">Expiring in 28 days</p>
                   </td>
                   <td class="px-5 md:px-6 py-4 text-center">
                     <div
                       class="flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <button
                         class="w-8 h-8 rounded-lg bg-white text-slate-500 hover:text-brand-primary shadow-sm border border-slate-200 flex items-center justify-center hover:scale-105 transition-transform"
-                        title="View Profile">
-                        <span class="material-symbols-rounded text-[18px]">visibility</span>
-                      </button>
-                      <button
-                        class="w-8 h-8 rounded-lg bg-white text-slate-500 hover:text-brand-accent shadow-sm border border-slate-200 flex items-center justify-center hover:scale-105 transition-transform"
-                        title="Edit">
-                        <span class="material-symbols-rounded text-[18px]">edit</span>
-                      </button>
-                    </div>
-                    <button
-                      class="md:hidden w-8 h-8 rounded-lg text-slate-400 flex items-center justify-center mx-auto">
-                      <span class="material-symbols-rounded text-[20px]">more_vert</span>
-                    </button>
-                  </td>
-                </tr>
-
-                <!-- Row 4 -->
-                <tr class="hover:bg-brand-light/20 transition-all duration-300 group cursor-pointer">
-                  <td class="px-5 md:px-6 py-4">
-                    <div class="flex items-center gap-3 md:gap-4">
-                      <img src="https://api.dicebear.com/7.x/notionists/svg?seed=David" alt="Avatar"
-                        class="w-10 h-10 rounded-full bg-slate-100 shadow-sm ring-2 ring-white" />
-                      <div>
-                        <p class="text-sm font-bold text-slate-800 group-hover:text-brand-primary transition-colors">
-                          David Chen</p>
-                        <p class="text-[10px] md:text-xs text-slate-400 font-medium mt-0.5">ID: #PT-29362</p>
-                      </div>
-                    </div>
-                  </td>
-                  <td class="px-5 md:px-6 py-4">
-                    <p class="text-xs md:text-sm font-semibold text-slate-700">+1 (555) 776-3421</p>
-                    <p class="text-[10px] md:text-xs text-slate-400 mt-0.5">d.chen@work.com</p>
-                  </td>
-                  <td class="px-5 md:px-6 py-4">
-                    <span class="text-xs md:text-sm font-semibold text-slate-700">55 yrs, Male</span>
-                  </td>
-                  <td class="px-5 md:px-6 py-4">
-                    <p class="text-xs md:text-sm font-semibold text-slate-700">Mar 12, 2025</p>
-                    <p class="text-[10px] md:text-xs text-brand-warning font-medium mt-0.5">Chest X-Ray</p>
-                  </td>
-                  <td class="px-5 md:px-6 py-4">
-                    <span
-                      class="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-[10px] md:text-xs font-bold bg-orange-50 text-orange-600 border border-orange-100 shadow-sm">
-                      <span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span> Urgent Review
-                    </span>
-                  </td>
-                  <td class="px-5 md:px-6 py-4 text-center">
-                    <div
-                      class="flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <button
-                        class="w-8 h-8 rounded-lg bg-white text-slate-500 hover:text-brand-primary shadow-sm border border-slate-200 flex items-center justify-center hover:scale-105 transition-transform"
-                        title="View Profile">
-                        <span class="material-symbols-rounded text-[18px]">visibility</span>
+                        title="Order More">
+                        <span class="material-symbols-rounded text-[18px]">add_shopping_cart</span>
                       </button>
                       <button
                         class="w-8 h-8 rounded-lg bg-white text-slate-500 hover:text-brand-accent shadow-sm border border-slate-200 flex items-center justify-center hover:scale-105 transition-transform"
@@ -672,7 +729,7 @@
           <!-- Pagination -->
           <div
             class="px-5 md:px-6 py-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4 bg-slate-50/50">
-            <span class="text-xs font-medium text-slate-500">Showing 1 to 4 of 4,289 entries</span>
+            <span class="text-xs font-medium text-slate-500">Showing 1 to 4 of 1,245 entries</span>
             <div class="flex items-center gap-1">
               <button
                 class="w-8 h-8 rounded-lg border border-slate-200 bg-white text-slate-400 flex items-center justify-center hover:bg-slate-50 hover:text-brand-primary transition-colors disabled:opacity-50"

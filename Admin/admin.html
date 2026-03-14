@@ -183,14 +183,14 @@
     </div>
 
     <!-- Navigation Icons -->
-    <nav class="flex flex-col gap-2 md:gap-4 w-full md:pl-3">
+    <nav class="flex flex-col gap-1 md:gap-2 w-full md:pl-3">
 
       <!-- ACTIVE ITEM: Dashboard -->
       <div
         class="sidebar-item-active w-full py-3 px-6 md:px-0 md:pl-3 md:pr-0 flex items-center justify-start md:justify-end cursor-pointer group relative bg-brand-primary/10 border-r-4 border-brand-primary md:bg-transparent md:border-r-0">
         <div
           class="w-10 h-10 md:w-12 md:h-12 md:mr-3 shrink-0 bg-brand-primary rounded-xl shadow-lg shadow-brand-primary/50 flex items-center justify-center text-white relative z-10 md:scale-105 transition-transform">
-          <span class="material-symbols-rounded text-[22px] md:text-[26px]">dashboard</span>
+          <span class="material-symbols-rounded text-[22px] md:text-[26px]"><a href="/Admin/admin.html">dashboard</a></span>
         </div>
 
         <!-- Mobile Label -->
@@ -206,8 +206,8 @@
       </div>
 
       <!-- INACTIVE ITEM: POS -->
-      <a href="#"
-        class="w-full py-3 md:py-4 px-6 md:px-0 flex items-center justify-start md:justify-center text-slate-400 hover:text-white hover:bg-white/5 md:hover:bg-transparent transition-all group relative">
+      <a href="/Admin/Point.html"
+        class="w-full py-2 md:py-2.5 px-6 md:px-0 flex items-center justify-start md:justify-center text-slate-400 hover:text-white hover:bg-white/5 md:hover:bg-transparent transition-all group relative">
         <div class="w-10 h-10 md:w-12 md:h-12 shrink-0 flex items-center justify-center">
           <span
             class="material-symbols-rounded text-[24px] md:text-[26px] group-hover:scale-125 group-hover:text-brand-primary transition-all duration-300">point_of_sale</span>
@@ -224,8 +224,8 @@
       </a>
 
       <!-- INACTIVE ITEM: Patients -->
-      <a href="#"
-        class="w-full py-3 md:py-4 px-6 md:px-0 flex items-center justify-start md:justify-center text-slate-400 hover:text-white hover:bg-white/5 md:hover:bg-transparent transition-all group relative">
+      <a href="/Admin/patient.html"
+        class="w-full py-2 md:py-2.5 px-6 md:px-0 flex items-center justify-start md:justify-center text-slate-400 hover:text-white hover:bg-white/5 md:hover:bg-transparent transition-all group relative">
         <div class="w-10 h-10 md:w-12 md:h-12 shrink-0 flex items-center justify-center">
           <span
             class="material-symbols-rounded text-[24px] md:text-[26px] group-hover:scale-125 group-hover:text-brand-accent transition-all duration-300">group</span>
@@ -242,8 +242,8 @@
       </a>
 
       <!-- INACTIVE ITEM: Inventory -->
-      <a href="#"
-        class="w-full py-3 md:py-4 px-6 md:px-0 flex items-center justify-start md:justify-center text-slate-400 hover:text-white hover:bg-white/5 md:hover:bg-transparent transition-all group relative">
+      <a href="/Admin/Inventory.html"
+        class="w-full py-2 md:py-2.5 px-6 md:px-0 flex items-center justify-start md:justify-center text-slate-400 hover:text-white hover:bg-white/5 md:hover:bg-transparent transition-all group relative">
         <div class="w-10 h-10 md:w-12 md:h-12 shrink-0 flex items-center justify-center">
           <span
             class="material-symbols-rounded text-[24px] md:text-[26px] group-hover:scale-125 group-hover:text-warning transition-all duration-300">inventory_2</span>
@@ -260,8 +260,8 @@
       </a>
 
       <!-- INACTIVE ITEM: Analytics -->
-      <a href="#"
-        class="w-full py-3 md:py-4 px-6 md:px-0 flex items-center justify-start md:justify-center text-slate-400 hover:text-white hover:bg-white/5 md:hover:bg-transparent transition-all group relative">
+      <a href="/Admin/LabReport.html"
+        class="w-full py-2 md:py-2.5 px-6 md:px-0 flex items-center justify-start md:justify-center text-slate-400 hover:text-white hover:bg-white/5 md:hover:bg-transparent transition-all group relative">
         <div class="w-10 h-10 md:w-12 md:h-12 shrink-0 flex items-center justify-center">
           <span
             class="material-symbols-rounded text-[24px] md:text-[26px] group-hover:scale-125 group-hover:text-blue-400 transition-all duration-300">bar_chart</span>
@@ -280,7 +280,7 @@
 
     <!-- Bottom Settings -->
     <div class="mt-auto w-full md:pl-3">
-      <a href="#"
+      <a href="/Admin/setting.html"
         class="w-full py-4 px-6 md:px-0 flex items-center justify-start md:justify-center text-slate-400 hover:text-white hover:bg-white/5 md:hover:bg-transparent transition-all group relative">
         <div class="w-10 h-10 md:w-12 md:h-12 shrink-0 flex items-center justify-center">
           <span
@@ -680,33 +680,33 @@
               <thead>
                 <tr class="bg-slate-50/80">
                   <th
-                    class="px-5 md:px-6 py-3 md:py-4 text-[10px] md:text-xs font-bold text-slate-400 uppercase tracking-wider border-b border-slate-200">
+                    class="px-5 md:px-6 py-2 md:py-2.5 text-[10px] md:text-xs font-bold text-slate-400 uppercase tracking-wider border-b border-slate-200">
                     Order ID</th>
                   <th
-                    class="px-5 md:px-6 py-3 md:py-4 text-[10px] md:text-xs font-bold text-slate-400 uppercase tracking-wider border-b border-slate-200">
+                    class="px-5 md:px-6 py-2 md:py-2.5 text-[10px] md:text-xs font-bold text-slate-400 uppercase tracking-wider border-b border-slate-200">
                     Patient / Client</th>
                   <th
-                    class="px-5 md:px-6 py-3 md:py-4 text-[10px] md:text-xs font-bold text-slate-400 uppercase tracking-wider border-b border-slate-200">
+                    class="px-5 md:px-6 py-2 md:py-2.5 text-[10px] md:text-xs font-bold text-slate-400 uppercase tracking-wider border-b border-slate-200">
                     Date & Time</th>
                   <th
-                    class="px-5 md:px-6 py-3 md:py-4 text-[10px] md:text-xs font-bold text-slate-400 uppercase tracking-wider border-b border-slate-200">
+                    class="px-5 md:px-6 py-2 md:py-2.5 text-[10px] md:text-xs font-bold text-slate-400 uppercase tracking-wider border-b border-slate-200">
                     Amount</th>
                   <th
-                    class="px-5 md:px-6 py-3 md:py-4 text-[10px] md:text-xs font-bold text-slate-400 uppercase tracking-wider border-b border-slate-200">
+                    class="px-5 md:px-6 py-2 md:py-2.5 text-[10px] md:text-xs font-bold text-slate-400 uppercase tracking-wider border-b border-slate-200">
                     Status</th>
                   <th
-                    class="px-5 md:px-6 py-3 md:py-4 text-[10px] md:text-xs font-bold text-slate-400 uppercase tracking-wider border-b border-slate-200 text-right">
+                    class="px-5 md:px-6 py-2 md:py-2.5 text-[10px] md:text-xs font-bold text-slate-400 uppercase tracking-wider border-b border-slate-200 text-right">
                     Action</th>
                 </tr>
               </thead>
               <tbody class="divide-y divide-slate-100">
                 <!-- Row 1 -->
                 <tr class="hover:bg-brand-light/30 transition-all duration-300 group cursor-pointer">
-                  <td class="px-5 md:px-6 py-3 md:py-4">
+                  <td class="px-5 md:px-6 py-2 md:py-2.5">
                     <span
                       class="text-xs md:text-sm font-bold text-slate-700 group-hover:text-brand-primary transition-colors">#ORD-88392</span>
                   </td>
-                  <td class="px-5 md:px-6 py-3 md:py-4">
+                  <td class="px-5 md:px-6 py-2 md:py-2.5">
                     <div class="flex items-center gap-3">
                       <div
                         class="w-8 h-8 md:w-9 md:h-9 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-[10px] md:text-xs font-bold shadow-sm">
@@ -714,17 +714,17 @@
                       <span class="text-xs md:text-sm font-semibold text-slate-700">Elena Martinez</span>
                     </div>
                   </td>
-                  <td class="px-5 md:px-6 py-3 md:py-4 text-xs md:text-sm text-slate-500 font-medium">Today, 10:24 AM
+                  <td class="px-5 md:px-6 py-2 md:py-2.5 text-xs md:text-sm text-slate-500 font-medium">Today, 10:24 AM
                   </td>
-                  <td class="px-5 md:px-6 py-3 md:py-4 font-heading font-bold text-slate-800 text-sm md:text-base">
+                  <td class="px-5 md:px-6 py-2 md:py-2.5 font-heading font-bold text-slate-800 text-sm md:text-base">
                     $173.25</td>
-                  <td class="px-5 md:px-6 py-3 md:py-4">
+                  <td class="px-5 md:px-6 py-2 md:py-2.5">
                     <span
                       class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] md:text-xs font-bold bg-emerald-50 text-emerald-600 border border-emerald-100 shadow-sm">
                       <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Completed
                     </span>
                   </td>
-                  <td class="px-5 md:px-6 py-3 md:py-4 text-right">
+                  <td class="px-5 md:px-6 py-2 md:py-2.5 text-right">
                     <button
                       class="w-8 h-8 md:w-9 md:h-9 rounded-xl text-slate-400 hover:text-brand-primary hover:bg-white hover:shadow-md border border-transparent hover:border-slate-200 flex items-center justify-center transition-all ml-auto">
                       <span class="material-symbols-rounded text-[18px] md:text-[20px]">receipt_long</span>
@@ -734,11 +734,11 @@
 
                 <!-- Row 2 -->
                 <tr class="hover:bg-brand-light/30 transition-all duration-300 group cursor-pointer">
-                  <td class="px-5 md:px-6 py-3 md:py-4">
+                  <td class="px-5 md:px-6 py-2 md:py-2.5">
                     <span
                       class="text-xs md:text-sm font-bold text-slate-700 group-hover:text-brand-primary transition-colors">#ORD-88391</span>
                   </td>
-                  <td class="px-5 md:px-6 py-3 md:py-4">
+                  <td class="px-5 md:px-6 py-2 md:py-2.5">
                     <div class="flex items-center gap-3">
                       <div
                         class="w-8 h-8 md:w-9 md:h-9 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center text-[10px] md:text-xs font-bold shadow-sm">
@@ -746,17 +746,17 @@
                       <span class="text-xs md:text-sm font-semibold text-slate-700">John Smith</span>
                     </div>
                   </td>
-                  <td class="px-5 md:px-6 py-3 md:py-4 text-xs md:text-sm text-slate-500 font-medium">Today, 09:15 AM
+                  <td class="px-5 md:px-6 py-2 md:py-2.5 text-xs md:text-sm text-slate-500 font-medium">Today, 09:15 AM
                   </td>
-                  <td class="px-5 md:px-6 py-3 md:py-4 font-heading font-bold text-slate-800 text-sm md:text-base">
+                  <td class="px-5 md:px-6 py-2 md:py-2.5 font-heading font-bold text-slate-800 text-sm md:text-base">
                     $45.00</td>
-                  <td class="px-5 md:px-6 py-3 md:py-4">
+                  <td class="px-5 md:px-6 py-2 md:py-2.5">
                     <span
                       class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] md:text-xs font-bold bg-blue-50 text-blue-600 border border-blue-100 shadow-sm">
                       <span class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse"></span> Processing
                     </span>
                   </td>
-                  <td class="px-5 md:px-6 py-3 md:py-4 text-right">
+                  <td class="px-5 md:px-6 py-2 md:py-2.5 text-right">
                     <button
                       class="w-8 h-8 md:w-9 md:h-9 rounded-xl text-slate-400 hover:text-brand-primary hover:bg-white hover:shadow-md border border-transparent hover:border-slate-200 flex items-center justify-center transition-all ml-auto">
                       <span class="material-symbols-rounded text-[18px] md:text-[20px]">receipt_long</span>
@@ -766,11 +766,11 @@
 
                 <!-- Row 3 -->
                 <tr class="hover:bg-brand-light/30 transition-all duration-300 group cursor-pointer">
-                  <td class="px-5 md:px-6 py-3 md:py-4">
+                  <td class="px-5 md:px-6 py-2 md:py-2.5">
                     <span
                       class="text-xs md:text-sm font-bold text-slate-700 group-hover:text-brand-primary transition-colors">#ORD-88390</span>
                   </td>
-                  <td class="px-5 md:px-6 py-3 md:py-4">
+                  <td class="px-5 md:px-6 py-2 md:py-2.5">
                     <div class="flex items-center gap-3">
                       <div
                         class="w-8 h-8 md:w-9 md:h-9 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center text-[10px] md:text-xs font-bold shadow-sm">
@@ -778,17 +778,17 @@
                       <span class="text-xs md:text-sm font-semibold text-slate-700">Walk-in Client</span>
                     </div>
                   </td>
-                  <td class="px-5 md:px-6 py-3 md:py-4 text-xs md:text-sm text-slate-500 font-medium">Yesterday, 04:30
+                  <td class="px-5 md:px-6 py-2 md:py-2.5 text-xs md:text-sm text-slate-500 font-medium">Yesterday, 04:30
                     PM</td>
-                  <td class="px-5 md:px-6 py-3 md:py-4 font-heading font-bold text-slate-800 text-sm md:text-base">
+                  <td class="px-5 md:px-6 py-2 md:py-2.5 font-heading font-bold text-slate-800 text-sm md:text-base">
                     $15.00</td>
-                  <td class="px-5 md:px-6 py-3 md:py-4">
+                  <td class="px-5 md:px-6 py-2 md:py-2.5">
                     <span
                       class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] md:text-xs font-bold bg-emerald-50 text-emerald-600 border border-emerald-100 shadow-sm">
                       <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Completed
                     </span>
                   </td>
-                  <td class="px-5 md:px-6 py-3 md:py-4 text-right">
+                  <td class="px-5 md:px-6 py-2 md:py-2.5 text-right">
                     <button
                       class="w-8 h-8 md:w-9 md:h-9 rounded-xl text-slate-400 hover:text-brand-primary hover:bg-white hover:shadow-md border border-transparent hover:border-slate-200 flex items-center justify-center transition-all ml-auto">
                       <span class="material-symbols-rounded text-[18px] md:text-[20px]">receipt_long</span>
